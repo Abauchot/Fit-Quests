@@ -1,0 +1,201 @@
+# 🏰 Fit&Quests
+
+*Level up your fitness with D&D-inspired workouts!*
+
+![React Native](https://img.shields.io/badge/React%20Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+## 🎲 About
+
+Fit&Quests is a gamified fitness app that brings the excitement of Dungeons & Dragons to your workout routine. Choose your character class and embark on fitness quests designed specifically for your preferred playstyle!
+
+## ✨ Features
+
+### 🧙‍♂️ Character Classes
+Choose from 12 D&D character classes, each with tailored exercises:
+
+- **🛡️ Guerrier (Fighter)** - Strength training and endurance
+- **🥋 Moine (Monk)** - Flexibility and balance exercises
+- **🗡️ Roublard (Rogue)** - Agility and quick movements
+- **🎵 Barde (Bard)** - Rhythmic and dance-based workouts
+- **⚡ Clerc (Cleric)** - Healing stretches and recovery
+- **🌿 Druide (Druid)** - Nature-inspired movements
+- **📚 Mage (Wizard)** - Focus and concentration exercises
+- **🛡️ Paladin** - Honor-bound strength training
+- **🏹 Rôdeur (Ranger)** - Outdoor and tracking activities
+- **🔥 Sorcier (Sorcerer)** - Dynamic and explosive movements
+- **👹 Warlock** - Dark and mysterious workouts
+- **⚔️ Barbare (Barbarian)** - Raw power and intensity
+
+### 🎯 Smart Workout Generation
+- **Personalized Routines**: Workouts adapted to your chosen class
+- **Health Considerations**: Automatic modifications for knee and shoulder issues
+- **Progressive Difficulty**: Exercises scale with your level
+- **XP Rewards**: Gain experience points for completing workouts
+
+### 📱 Modern Mobile Experience
+- **Cross-Platform**: Available on iOS, Android, and Web
+- **Responsive Design**: Optimized for all screen sizes
+- **Offline Support**: Local storage for progress tracking
+- **Dark/Light Theme**: Automatic theme switching
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+- Expo CLI
+- iOS Simulator (for iOS development) or Android Emulator
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Abauchot/Fit-Quests.git
+   cd Fit-Quests
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+4. **Run on your preferred platform**
+   ```bash
+   # iOS
+   npm run ios
+   
+   # Android
+   npm run android
+   
+   # Web
+   npm run web
+   ```
+
+## 🏗️ Project Structure
+
+```
+fitquests/
+├── app/                    # App Router pages (Expo Router v6)
+│   ├── (tabs)/            # Tab navigation screens
+│   │   ├── _layout.tsx    # Tab layout configuration
+│   │   └── index.tsx      # Home screen
+│   ├── _layout.tsx        # Root layout
+│   └── +not-found.tsx    # 404 page
+├── src/
+│   ├── data/
+│   │   └── exercises.ts   # Exercise database for all classes
+│   ├── services/
+│   │   └── storage.ts     # AsyncStorage service for persistence
+│   ├── types/
+│   │   └── index.ts       # TypeScript type definitions
+│   └── utils/             # Utility functions
+├── components/            # Reusable React components
+├── constants/             # App constants and configurations
+├── assets/               # Images, fonts, and static assets
+└── package.json
+```
+
+## 🎮 Core Features Explained
+
+### Exercise Database
+The app includes a comprehensive database of exercises categorized by D&D classes:
+
+```typescript
+// Example: Guerrier (Fighter) exercises focus on strength
+{
+  name: 'Pompes murales',
+  description: 'Renforcement du haut du corps pour les guerriers',
+  duration: 45,
+  instructions: [...],
+  modifications: {
+    shoulder: 'Réduisez l\'amplitude du mouvement'
+  },
+  xpReward: 10
+}
+```
+
+### Health Modifications
+Exercises automatically adapt based on user health flags:
+- **Knee Issues**: Alternative low-impact movements
+- **Shoulder Issues**: Modified upper body exercises
+
+### XP and Leveling System
+- Earn XP by completing exercises
+- Level up your character
+- Unlock new workout variations
+
+## 🛠️ Tech Stack
+
+- **Framework**: React Native with Expo
+- **Navigation**: Expo Router v6
+- **Language**: TypeScript
+- **Storage**: AsyncStorage for local persistence
+- **State Management**: React Hooks
+- **Styling**: StyleSheet API
+- **Notifications**: Expo Notifications
+- **Audio**: Expo Speech (for workout guidance)
+
+## 📦 Key Dependencies
+
+- `expo` - Development platform
+- `react-native` - Mobile framework
+- `@react-native-async-storage/async-storage` - Local storage
+- `expo-router` - File-based routing
+- `expo-speech` - Text-to-speech functionality
+- `uuid` - Unique identifier generation
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Use TypeScript for all new code
+- Follow the existing code style and structure
+- Add exercises for new character classes in `src/data/exercises.ts`
+- Update type definitions in `src/types/index.ts`
+- Test on multiple platforms before submitting
+
+## 🎯 Roadmap
+
+- [ ] User profiles and progress tracking
+- [ ] Social features (guilds, challenges)
+- [ ] Custom workout creation
+- [ ] Achievement system
+- [ ] Wearable device integration
+- [ ] Multiplayer workout sessions
+- [ ] AR exercise demonstrations
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by Dungeons & Dragons 5th Edition
+- Built with ❤️ using Expo and React Native
+- Exercise modifications based on fitness accessibility guidelines
+
+## 📞 Contact
+
+**Developer**: Abauchot
+**Repository**: [https://github.com/Abauchot/Fit-Quests](https://github.com/Abauchot/Fit-Quests)
+
+---
+
+*Ready to turn your fitness journey into an epic adventure? Choose your class and begin your quest!* ⚔️💪
