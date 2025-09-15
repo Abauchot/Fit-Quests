@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserProfile, WorkoutHistory, WeeklyProgress, AppState } from '../types';
+import { AppState, UserProfile, WeeklyProgress, WorkoutHistory } from '../types';
 
 // Clés de stockage
 const STORAGE_KEYS = {

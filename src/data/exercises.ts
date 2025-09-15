@@ -1,4 +1,4 @@
-import { DnDClass, Workout, Exercise } from '../types';
+import { DnDClass, Exercise, Workout } from '../types';
 
 // Exercices de base par classe D&D
 export const EXERCISE_DATABASE: Record<DnDClass, Exercise[]> = {
