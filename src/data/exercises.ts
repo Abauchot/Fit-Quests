@@ -364,7 +364,7 @@ export const EXERCISE_DATABASE: Record<DnDClass, Exercise[]> = {
   ]
 };
 
-// Création des séances par classe
+// Creating workouts by class
 export const WORKOUTS_BY_CLASS: Record<DnDClass, Workout> = Object.entries(EXERCISE_DATABASE).reduce((acc, [className, exercises]) => {
   const dndClass = className as DnDClass;
   

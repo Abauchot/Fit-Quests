@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppState, UserProfile, WeeklyProgress, WorkoutHistory } from '../types';
 
-// Clés de stockage
+// Storage keys
 const STORAGE_KEYS = {
   USER_PROFILE: 'fit_quest_user_profile',
   WORKOUT_HISTORY: 'fit_quest_workout_history',
@@ -11,7 +11,7 @@ const STORAGE_KEYS = {
 } as const;
 
 export class StorageService {
-  // Profil utilisateur
+  // User profile
   static async saveUserProfile(profile: UserProfile): Promise<void> {
     try {
       await AsyncStorage.setItem(STORAGE_KEYS.USER_PROFILE, JSON.stringify(profile));
@@ -31,7 +31,7 @@ export class StorageService {
     }
   }
 
-  // Historique des séances
+  // Workout history
   static async saveWorkoutHistory(history: WorkoutHistory[]): Promise<void> {
     try {
       await AsyncStorage.setItem(STORAGE_KEYS.WORKOUT_HISTORY, JSON.stringify(history));
@@ -82,7 +82,7 @@ export class StorageService {
     }
   }
 
-  // État global de l'app
+  // Global app state
   static async saveAppState(state: Partial<AppState>): Promise<void> {
     try {
       const currentState = await this.getAppState();
