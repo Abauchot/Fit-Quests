@@ -8,13 +8,12 @@ export interface HealthFlags {
 export interface UserProfile {
     id: string;
     username: string;
-    password: string;
     favoriteClass: DnDClass;
     healthFlags: HealthFlags;
     totalXP: number;
     level: number;
     createdAt: string;
-    jwt: string;
+
 }
 export interface User {
     id: string;
@@ -26,14 +25,38 @@ export interface User {
 
 export interface CreateUserInput {
     username: string;
-    firstName: string;
-    lastName: string;
-    password: string;
+    pin : string;
+    favoriteClass?: DnDClass;
+
+}
+
+export interface AuthCredentials {
+    username: string;
+    pin: string;
+}
+
+export interface UserSettings {
+    avatar?: string;
+    theme?: 'light' | 'dark';
+    notificationsEnabled?: boolean;
 }
 
 export interface UpdateUserInput {
     username?: string;
-    firstName?: string;
-    lastName?: string;
-    avatar?: string;
+    pin?: string;
+    favoriteClass?: DnDClass;
+    healthFlags?: HealthFlags;
 }
+
+export interface UpdateUserSettingsInput {
+    avatar?: string;
+    theme?: 'light' | 'dark';
+    notificationsEnabled?: boolean;
+}
+
+export interface ChangePasswordInput {
+    oldPin: string;
+    newPin: string;
+}
+
+
