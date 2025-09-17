@@ -1,10 +1,11 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Tabs, router } from 'expo-router';
+import { Tabs } from 'expo-router';
 import React from 'react';
 
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
+import { useAuth } from '@/src/hooks/useAuth';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -16,6 +17,13 @@ function TabBarIcon(props: {
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { isAuthenticated, isLoading } = useAuth();
+  const headerShown = useClientOnlyValue(false, true);
+
+  // Afficher un écran de chargement pendant la vérification de l'auth
+  if (isLoading) {
+    return null; // ou un écran de chargement
+  }
 
   return (
     <Tabs
@@ -23,7 +31,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: headerShown,
       }}>
       <Tabs.Screen
         name="index"
@@ -32,19 +40,35 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="signup"
-        options={{
-          title: 'Signup',
-          tabBarIcon: ({ color }) => <TabBarIcon name="user-plus" color={color} />,
-        }}
-        listeners={{
-          tabPress: (e) => {
-            e.preventDefault();
-            router.push('/signup');
-          },
-        }}
-      />
+      
+      {isAuthenticated ? (
+        // Utilisateur connecté : afficher seulement le Profile
+        <Tabs.Screen
+          name="profile"
+          options={{
+            title: 'Profil',
+            tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          }}
+        />
+      ) : (
+        // Utilisateur non connecté : afficher Login et Signup
+        <>
+          <Tabs.Screen
+            name="profile"
+            options={{
+              title: 'Login',
+              tabBarIcon: ({ color }) => <TabBarIcon name="sign-in" color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="signup"
+            options={{
+              title: 'Signup',
+              tabBarIcon: ({ color }) => <TabBarIcon name="user-plus" color={color} />,
+            }}
+          />
+        </>
+      )}
     </Tabs>
   );
 }

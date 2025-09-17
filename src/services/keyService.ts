@@ -83,6 +83,11 @@ export class KeyService {
         return this.dataKey;
     }
 
+    // Check if user is currently authenticated
+    static isAuthenticated(): boolean {
+        return this.dataKey !== null;
+    }
+
     //  Check if account is locked
     private static async isLocked(): Promise<boolean> {
         const lockedUntilStr = await AsyncStorage.getItem(STORAGE_KEYS.LOCKED_UNTIL);
