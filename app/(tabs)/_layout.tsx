@@ -1,5 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Tabs } from 'expo-router';
+import { Tabs, router } from 'expo-router';
 import React from 'react';
 
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
@@ -30,6 +30,19 @@ export default function TabLayout() {
         options={{
           title: 'Accueil',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="signup"
+        options={{
+          title: 'Signup',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user-plus" color={color} />,
+        }}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            router.push('/signup');
+          },
         }}
       />
     </Tabs>
