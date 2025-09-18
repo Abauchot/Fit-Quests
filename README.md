@@ -8,7 +8,11 @@
 
 ## 🎲 About
 
-Fit&Quests is a gamified fitness app that brings the excitement of Dungeons & Dragons to your workout routine. Choose your character class and embark on fitness quests designed specifically for your preferred playstyle!
+Fit&Quests is a fitness app project in early development that aims to bring D&D-style gamification to workouts.
+
+🚧 **CURRENT STATE**: Basic user authentication system (signup, login, profile) with foundational data structures for future D&D class-based fitness programs.
+
+� **FUTURE VISION**: Weekly exercise programs with boss fights, but this is not yet implemented in the user interface.
 
 ## ⚠️ Important Notice - AI-Generated Exercise Programs
 
@@ -27,20 +31,20 @@ Fit&Quests is a gamified fitness app that brings the excitement of Dungeons & Dr
 
 ## 📊 Character Classes & Weekly Programs
 
-| Class | Main Theme | Difficulty | Final Boss Fight | Total XP |
-|-------|------------|------------|------------------|----------|
-| 🎵 **Bard** | Performance & Inspiration | Intermediate | The Grand Performance | 1,185 XP |
-| ⚔️ **Fighter** | Military Combat | Advanced | Ancient Dragon Battle | 1,950 XP |
-| 📚 **Wizard** | Focus & Concentration | Beginner | Archmage's Trial | 1,590 XP |
-| 🥋 **Monk** | Martial Arts & Meditation | Intermediate | Trial of Grand Master | 1,825 XP |
-| 🗡️ **Rogue** | Stealth & Precision | Intermediate | The Ultimate Heist | 1,740 XP |
-| 🏹 **Ranger** | Endurance & Nature | Advanced | Hunt of Ancient Beast | 1,895 XP |
-| 🛡️ **Paladin** | Divine Strength & Justice | Advanced | Demon Lord's Challenge | 2,015 XP |
-| ⚡ **Barbarian** | Primal Power | Advanced | Clash of the Titans | 1,265 XP |
-| ✨ **Cleric** | Divine Endurance & Healing | Intermediate | The Undead Plague | 1,145 XP |
-| 🌿 **Druid** | Nature Connection & Elements | Intermediate | Elemental Convergence | 1,155 XP |
-| 🔥 **Sorcerer** | Chaotic Energy & Control | Intermediate | Chaos Lord's Challenge | 840 XP |
-| 👹 **Warlock** | Dark Pact & Discipline | Advanced | The Patron's Final Test | 1,716 XP |
+| Class | Main Theme | Final Boss Fight | Total XP |
+|-------|------------|------------------|----------|
+| 🎵 **Bard** | Performance & Inspiration | The Grand Performance | 1,185 XP |
+| ⚔️ **Fighter** | Military Combat | Ancient Dragon Battle | 1,950 XP |
+| 📚 **Wizard** | Focus & Concentration | Archmage's Trial | 1,590 XP |
+| 🥋 **Monk** | Martial Arts & Meditation | Trial of Grand Master | 1,825 XP |
+| 🗡️ **Rogue** | Stealth & Precision | The Ultimate Heist | 1,740 XP |
+| 🏹 **Ranger** | Endurance & Nature | Hunt of Ancient Beast | 1,895 XP |
+| 🛡️ **Paladin** | Divine Strength & Justice | Demon Lord's Challenge | 2,015 XP |
+| ⚡ **Barbarian** | Primal Power | Clash of the Titans | 1,265 XP |
+| ✨ **Cleric** | Divine Endurance & Healing | The Undead Plague | 1,145 XP |
+| 🌿 **Druid** | Nature Connection & Elements | Elemental Convergence | 1,155 XP |
+| 🔥 **Sorcerer** | Chaotic Energy & Control | Chaos Lord's Challenge | 840 XP |
+| 👹 **Warlock** | Dark Pact & Discipline | The Patron's Final Test | 1,716 XP |
 
 ### 🎯 Program Features
 
@@ -52,29 +56,37 @@ Fit&Quests is a gamified fitness app that brings the excitement of Dungeons & Dr
 
 ## ✨ Features
 
-### 🧙‍♂️ Character Classes
+### 🧙‍♂️ Character Classes & Weekly Programs
 
-Choose from 12 D&D character classes, each with tailored exercises:
+Choose from 12 D&D character classes, each with complete **weekly training programs**:
 
-- **🛡️ Guerrier (Fighter)** - Strength training and endurance
-- **🥋 Moine (Monk)** - Flexibility and balance exercises
-- **🗡️ Roublard (Rogue)** - Agility and quick movements
-- **🎵 Barde (Bard)** - Rhythmic and dance-based workouts
-- **⚡ Clerc (Cleric)** - Healing stretches and recovery
-- **🌿 Druide (Druid)** - Nature-inspired movements
-- **📚 Mage (Wizard)** - Focus and concentration exercises
-- **🛡️ Paladin** - Honor-bound strength training
-- **🏹 Rôdeur (Ranger)** - Outdoor and tracking activities
-- **🔥 Sorcier (Sorcerer)** - Dynamic and explosive movements
-- **👹 Warlock** - Dark and mysterious workouts
-- **⚔️ Barbare (Barbarian)** - Raw power and intensity
+- **🎵 Bard** - Performance & Inspiration (Intermediate)
+- **⚔️ Fighter** - Military Combat Training (Advanced)
+- **📚 Wizard** - Focus & Concentration (Beginner)
+- **🥋 Monk** - Martial Arts & Meditation (Intermediate)
+- **🗡️ Rogue** - Stealth & Precision (Intermediate)
+- **� Ranger** - Endurance & Nature (Advanced)
+- **🛡️ Paladin** - Divine Strength & Justice (Advanced)
+- **⚡ Barbarian** - Primal Power (Advanced)
+- **✨ Cleric** - Divine Endurance & Healing (Intermediate)
+- **🌿 Druid** - Nature Connection & Elements (Intermediate)
+- **� Sorcerer** - Chaotic Energy & Control (Intermediate)
+- **� Warlock** - Dark Pact & Discipline (Advanced)
 
-### 🎯 Smart Workout Generation
+### 🏆 Weekly Program System
 
-- **Personalized Routines**: Workouts adapted to your chosen class
-- **Health Considerations**: Automatic modifications for knee and shoulder issues
-- **Progressive Difficulty**: Exercises scale with your level
-- **XP Rewards**: Gain experience points for completing workouts
+- **3 Thematic Workouts**: Each week contains 3 unique training sessions
+- **Epic Boss Fights**: Face a final challenge after completing all workouts
+- **Progressive Rewards**: Earn 840-2,015 XP per complete week
+- **Streak System**: Build momentum with consecutive weekly completions
+- **Class-Specific Themes**: Each class offers unique exercise variations
+
+### 🎯 Smart Features
+
+- **Health Modifications**: Automatic adaptations for knee and shoulder issues
+- **Completion Tracking**: Monitor progress through each weekly program
+- **Boss Challenge Metrics**: Performance ratings and completion statistics
+- **XP & Leveling**: Comprehensive progression system with rewards
 
 ### 📱 Modern Mobile Experience
 
@@ -132,60 +144,114 @@ Choose from 12 D&D character classes, each with tailored exercises:
 
 ## 🏗️ Project Structure
 
-```
+```text
 fitquests/
 ├── app/                    # App Router pages (Expo Router v6)
 │   ├── (tabs)/            # Tab navigation screens
 │   │   ├── _layout.tsx    # Tab layout configuration
-│   │   └── index.tsx      # Home screen
+│   │   ├── index.tsx      # Home screen
+│   │   ├── profile.tsx    # User profile
+│   │   └── signup.tsx     # Registration
+│   ├── login/             # Authentication
 │   ├── _layout.tsx        # Root layout
 │   └── +not-found.tsx    # 404 page
 ├── src/
 │   ├── data/
-│   │   └── exercises.ts   # Exercise database for all classes
+│   │   ├── exercises.ts           # Base exercise database
+│   │   └── weeklyPrograms.ts      # Complete D&D class programs
 │   ├── services/
-│   │   └── storage.ts     # AsyncStorage service for persistence
+│   │   ├── storage.ts             # Encrypted data persistence
+│   │   ├── weeklyProgressService.ts # Weekly program management
+│   │   ├── workoutService.ts      # Workout recommendations
+│   │   ├── cryptoService.ts       # Encryption utilities
+│   │   └── keyService.ts          # Key management
 │   ├── types/
-│   │   └── index.ts       # TypeScript type definitions
-│   └── utils/             # Utility functions
+│   │   ├── index.ts               # Core type definitions
+│   │   ├── exercise.ts            # Exercise & program types
+│   │   ├── boss.ts                # Boss challenge types
+│   │   ├── user.ts                # User data types
+│   │   └── app.ts                 # App-specific types
+│   ├── hooks/
+│   │   ├── useAuth.ts             # Authentication hook
+│   │   └── useFirstSession.ts     # First-time user logic
+│   ├── domain/                    # Business logic (planned)
+│   ├── ui/                        # UI components (planned)
+│   └── utils/                     # Utility functions (planned)
 ├── components/            # Reusable React components
 ├── constants/             # App constants and configurations
 ├── assets/               # Images, fonts, and static assets
-└── package.json
+└── docs/                 # Technical documentation
 ```
 
-## 🎮 Core Features Explained
+## 🎮 Planned System Architecture
 
-### Exercise Database
+### Data Structures Ready (Not Yet Used)
 
-The app includes a comprehensive database of exercises categorized by D&D classes:
+The foundation for D&D class programs exists in the codebase:
 
 ```typescript
-// Example: Guerrier (Fighter) exercises focus on strength
+// Example: Bard Weekly Program
 {
-  name: 'Pompes murales',
-  description: 'Renforcement du haut du corps pour les guerriers',
-  duration: 45,
-  instructions: [...],
-  modifications: {
-    shoulder: 'Réduisez l\'amplitude du mouvement'
+  id: 'weekly_bard',
+  name: 'College of Valor Training',
+  dndClass: 'Bard',
+  description: 'Versatile training that inspires your party',
+  difficulty: 'Intermediate',
+  weeklyWorkouts: [
+    // 3 themed workout days
+  ],
+  bossChallenge: {
+    name: 'The Grand Performance',
+    description: 'Epic performance battle',
+    requiredCompletionRate: 80,
+    xpReward: 500
   },
-  xpReward: 10
+  totalXPReward: 1185
 }
 ```
 
-### Health Modifications
+### Boss Fight System
 
-Exercises automatically adapt based on user health flags:
+After completing all weekly workouts, face an epic boss challenge:
 
-- **Knee Issues**: Alternative low-impact movements
-- **Shoulder Issues**: Modified upper body exercises
+- **Themed Battles**: Each class has unique boss encounters
+- **Performance Metrics**: Completion rate and time tracking
+- **Multiple Attempts**: Try again to improve your score
+- **Epic Rewards**: Substantial XP for defeating bosses
 
-### XP and Leveling System
+### Health Modifications & Accessibility
 
-- Earn XP by completing exercises
-- Level up your character
-- Unlock new workout variations
+All exercises include modifications for common limitations:
+
+- **Knee Issues**: Low-impact alternatives and reduced intensity
+- **Shoulder Issues**: Modified upper body movements
+- **Progressive Scaling**: Adjust difficulty based on user level
+
+## 🔧 Current Development Status
+
+### ✅ What Actually Works Now
+
+- **🔐 Authentication System**: Signup, login, logout with PIN security
+- **💱 User Profiles**: Basic profile display with favorite class selection
+- **🗄️ Data Models**: TypeScript interfaces for future features
+- **📏 Storage Layer**: Encrypted AsyncStorage ready for user data
+- **🛣️ Navigation**: Tab-based navigation between screens
+
+### 🚧 What's Missing (Major Features)
+
+- **🏋️ Workout Sessions**: No exercise interface implemented yet
+- **🎮 Gamification**: XP, levels, boss fights not connected to UI
+- **📈 Progress Tracking**: No real workout tracking in the app
+- **🤼 Class Programs**: D&D classes exist as data only, no workout flow
+- **🔥 Boss Fights**: Completely planned but not implemented
+
+### 📋 Immediate Next Steps
+
+1. **Create workout session UI**: Connect exercise data to user interface
+2. **Implement class selection flow**: Let users actually start programs
+3. **Add basic exercise tracking**: Timer, reps, completion
+4. **Build XP calculation**: Real-time feedback during workouts
+5. **Design boss fight interface**: Epic challenges after weekly completion
 
 ## 🛠️ Tech Stack
 
@@ -200,12 +266,14 @@ Exercises automatically adapt based on user health flags:
 
 ## 📦 Key Dependencies
 
-- `expo` - Development platform
+- `expo` - Development platform and toolchain
 - `react-native` - Mobile framework
-- `@react-native-async-storage/async-storage` - Local storage
-- `expo-router` - File-based routing
+- `@react-native-async-storage/async-storage` - Encrypted local storage
+- `expo-router` - File-based routing system
+- `expo-crypto` - Cryptographic operations for data security
 - `expo-speech` - Text-to-speech functionality
 - `uuid` - Unique identifier generation
+- `@types/uuid` - TypeScript type definitions
 
 ## 🤝 Contributing
 
@@ -225,13 +293,34 @@ Exercises automatically adapt based on user health flags:
 
 ## 🎯 Roadmap
 
-- [ ] User profiles and progress tracking
+### ✅ Completed Foundation
+
+- [x] Project setup with Expo and React Native
+- [x] User authentication system (signup/login/profile)
+- [x] Basic navigation and UI structure
+- [x] Data models for D&D classes and exercises
+- [x] Encrypted storage service
+- [x] TypeScript type definitions
+
+### 🚧 Major Missing Features
+
+- [ ] **Workout session interface** (core missing feature)
+- [ ] **Exercise selection and tracking**
+- [ ] **XP calculation and display**
+- [ ] **Weekly program flow**
+- [ ] **Boss fight implementation**
+- [ ] **Progress visualization**
+- [ ] **Class-specific workout experiences**
+
+### 🔮 Future Plans
+
 - [ ] Social features (guilds, challenges)
-- [ ] Custom workout creation
-- [ ] Achievement system
+- [ ] Custom workout creation tools
+- [ ] Achievement and badge system
 - [ ] Wearable device integration
 - [ ] Multiplayer workout sessions
 - [ ] AR exercise demonstrations
+- [ ] Professional coach validation (see disclaimer above)
 
 ## 📄 License
 
