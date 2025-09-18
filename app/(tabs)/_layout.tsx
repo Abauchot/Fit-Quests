@@ -20,6 +20,9 @@ export default function TabLayout() {
   const { isAuthenticated, isLoading } = useAuth();
   const headerShown = useClientOnlyValue(false, true);
 
+  // Debug: Log authentication status
+  console.log('TabLayout - isAuthenticated:', isAuthenticated, 'isLoading:', isLoading);
+
   // Afficher un écran de chargement pendant la vérification de l'auth
   if (isLoading) {
     return null; // ou un écran de chargement
@@ -41,34 +44,22 @@ export default function TabLayout() {
         }}
       />
       
-      {isAuthenticated ? (
-        // Utilisateur connecté : afficher seulement le Profile
-        <Tabs.Screen
-          name="profile"
-          options={{
-            title: 'Profil',
-            tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
-          }}
-        />
-      ) : (
-        // Utilisateur non connecté : afficher Login et Signup
-        <>
-          <Tabs.Screen
-            name="profile"
-            options={{
-              title: 'Login',
-              tabBarIcon: ({ color }) => <TabBarIcon name="sign-in" color={color} />,
-            }}
-          />
-          <Tabs.Screen
-            name="signup"
-            options={{
-              title: 'Signup',
-              tabBarIcon: ({ color }) => <TabBarIcon name="user-plus" color={color} />,
-            }}
-          />
-        </>
-      )}
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: isAuthenticated ? 'Profil' : 'Login',
+          tabBarIcon: ({ color }) => <TabBarIcon name={isAuthenticated ? "user" : "sign-in"} color={color} />,
+        }}
+      />
+      
+      <Tabs.Screen
+        name="signup"
+        options={{
+          href: isAuthenticated ? null : '/signup',
+          title: 'Signup',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user-plus" color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
