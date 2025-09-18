@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AppState, UserProfile, WeeklyProgress, WorkoutHistory } from '../types';
+import { AppState, DnDClass, UserProfile, WeeklyProgramProgress, WeeklyProgress, WorkoutHistory } from '../types';
 import { CryptoService } from './cryptoService';
 import { KeyService } from './keyService';
 
@@ -8,6 +8,7 @@ const ENCRYPTED_STORAGE_KEYS = {
   USER_PROFILE: 'encrypted_user_profile',
   WORKOUT_HISTORY: 'encrypted_workout_history',
   WEEKLY_PROGRESS: 'encrypted_weekly_progress',
+  WEEKLY_PROGRAM_PROGRESS: 'encrypted_weekly_program_progress',
   APP_STATE: 'encrypted_app_state'
 } as const;
 
@@ -351,6 +352,74 @@ export class StorageService {
     } catch (error) {
       console.error('Erreur lors de la récupération des clés:', error);
       return [];
+    }
+  }
+
+  // Weekly Program Progress methods
+  static async saveWeeklyProgramProgress(progress: WeeklyProgramProgress): Promise<void> {
+    try {
+      const allProgress = await this.getAllWeeklyProgramProgress();
+      const existingIndex = allProgress.findIndex(p => p.id === progress.id);
+      
+      if (existingIndex >= 0) {
+        allProgress[existingIndex] = progress;
+      } else {
+        allProgress.push(progress);
+      }
+      
+      await this.saveEncrypted(ENCRYPTED_STORAGE_KEYS.WEEKLY_PROGRAM_PROGRESS, allProgress);
+    } catch (error) {
+      console.error('Erreur lors de la sauvegarde de la progression hebdomadaire:', error);
+      throw error;
+    }
+  }
+
+  static async getAllWeeklyProgramProgress(): Promise<WeeklyProgramProgress[]> {
+    try {
+      const progress = await this.getDecrypted<WeeklyProgramProgress[]>(ENCRYPTED_STORAGE_KEYS.WEEKLY_PROGRAM_PROGRESS);
+      return progress || [];
+    } catch (error) {
+      console.error('Erreur lors de la récupération de la progression hebdomadaire:', error);
+      return [];
+    }
+  }
+
+  static async getCurrentWeeklyProgramProgress(userId: string, dndClass: DnDClass): Promise<WeeklyProgramProgress | null> {
+    try {
+      const allProgress = await this.getAllWeeklyProgramProgress();
+      
+      // Find the most recent non-completed progress for this user and class
+      const userProgress = allProgress
+        .filter(p => p.id.startsWith(`${userId}_${dndClass}_week_`))
+        .sort((a, b) => b.weekNumber - a.weekNumber);
+      
+      // Return the most recent incomplete week, or most recent if all completed
+      const incompleteWeek = userProgress.find(p => !p.weekCompleted);
+      return incompleteWeek || userProgress[0] || null;
+    } catch (error) {
+      console.error('Erreur lors de la récupération de la progression actuelle:', error);
+      return null;
+    }
+  }
+
+  static async getAllWeeklyProgramProgressForUser(userId: string, dndClass: DnDClass): Promise<WeeklyProgramProgress[]> {
+    try {
+      const allProgress = await this.getAllWeeklyProgramProgress();
+      return allProgress
+        .filter(p => p.id.startsWith(`${userId}_${dndClass}_week_`))
+        .sort((a, b) => a.weekNumber - b.weekNumber);
+    } catch (error) {
+      console.error('Erreur lors de la récupération de la progression utilisateur:', error);
+      return [];
+    }
+  }
+
+  static async clearWeeklyProgramProgress(): Promise<void> {
+    try {
+      await AsyncStorage.removeItem(ENCRYPTED_STORAGE_KEYS.WEEKLY_PROGRAM_PROGRESS);
+    } catch (error) {
+      console.error('Erreur lors de la suppression de la progression hebdomadaire:', error);
+      throw error;
     }
   }
 }
