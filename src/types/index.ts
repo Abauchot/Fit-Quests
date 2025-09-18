@@ -1,16 +1,16 @@
 export type DnDClass =
-  | 'Guerrier'
-  | 'Moine'
-  | 'Roublard'
-  | 'Barde'
-  | 'Clerc'
-  | 'Druide'
-  | 'Mage'
+  | 'Fighter'
+  | 'Monk'
+  | 'Rogue'
+  | 'Bard'
+  | 'Cleric'
+  | 'Druid'
+  | 'Wizard'
   | 'Paladin'
-  | 'Rôdeur'
-  | 'Sorcier'
+  | 'Ranger'
+  | 'Sorcerer'
   | 'Warlock'
-  | 'Barbare';
+  | 'Barbarian';
 
 
 export * from './app';

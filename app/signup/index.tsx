@@ -2,20 +2,44 @@ import { COLORS } from '@/constants/Colors';
 import { useAuth } from "@/src/hooks/useAuth";
 import { KeyService } from "@/src/services/keyService";
 import { StorageService } from "@/src/services/storage";
+import { DnDClass } from "@/src/types";
 import { UserProfile } from "@/src/types/user";
 import * as Crypto from 'expo-crypto';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useState } from "react";
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export default function SignupScreen() {
     const [username, setUsername] = useState("");
     const [pin, setPin] = useState("");
     const [confirmPin, setConfirmPin] = useState("");
+    const [selectedClass, setSelectedClass] = useState<DnDClass>("Fighter");
+    const [showClassModal, setShowClassModal] = useState(false);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const { checkAuthStatus } = useAuth();
+
+    const dndClasses: DnDClass[] = [
+        'Fighter', 'Monk', 'Rogue', 'Bard', 'Cleric', 
+        'Druid', 'Wizard', 'Paladin', 'Ranger', 'Sorcerer', 
+        'Warlock', 'Barbarian'
+    ];
+
+    const classDescriptions: Record<DnDClass, string> = {
+        'Fighter': 'Strength and physical endurance',
+        'Monk': 'Agility and spiritual balance',
+        'Rogue': 'Flexibility and precision',
+        'Bard': 'Charisma and versatility',
+        'Cleric': 'Mental strength and healing',
+        'Druid': 'Harmony with nature',
+        'Wizard': 'Intelligence and strategy',
+        'Paladin': 'Strength and devotion',
+        'Ranger': 'Endurance and survival',
+        'Sorcerer': 'Innate power',
+        'Warlock': 'Mysterious power',
+        'Barbarian': 'Brute force and rage'
+    };
 
     const handleSignup = async () => {
         if (!username || !pin || !confirmPin) {
@@ -47,7 +71,7 @@ export default function SignupScreen() {
             const user: UserProfile = {
                 id: Crypto.randomUUID(),
                 username,
-                favoriteClass: "Guerrier", 
+                favoriteClass: selectedClass, 
                 healthFlags: { hasKneeIssues: false, hasShoulderIssues: false },
                 totalXP: 0,
                 level: 1,
@@ -57,10 +81,10 @@ export default function SignupScreen() {
             // Save the user profile securely
             await StorageService.saveUserProfile(user);
             
-            // Actualiser l'état d'authentification
+            // Refresh authentication state
             await checkAuthStatus();
             
-            Alert.alert("Succès", "Votre aventure peut commencer !", [
+            Alert.alert("Success", "Your adventure can begin!", [
                 { text: "OK", onPress: () => router.replace('/') }
             ]);
         } catch (error) {
@@ -115,6 +139,18 @@ export default function SignupScreen() {
                         editable={!loading}
                         placeholderTextColor={COLORS.GRAY_MEDIUM}
                     />
+
+                    <TouchableOpacity
+                        style={styles.classSelector}
+                        onPress={() => setShowClassModal(true)}
+                        disabled={loading}
+                    >
+                        <Text style={styles.classSelectorLabel}>Favorite Class</Text>
+                        <Text style={styles.classSelectorValue}>{selectedClass}</Text>
+                        <Text style={styles.classSelectorDescription}>
+                            {classDescriptions[selectedClass]}
+                        </Text>
+                    </TouchableOpacity>
                     
                     {error ? <Text style={styles.errorText}>{error}</Text> : null}
                     
@@ -129,6 +165,53 @@ export default function SignupScreen() {
                         </Text>
                     </TouchableOpacity>
                 </View>
+
+                <Modal
+                    visible={showClassModal}
+                    transparent={true}
+                    animationType="slide"
+                    onRequestClose={() => setShowClassModal(false)}
+                >
+                    <View style={styles.modalOverlay}>
+                        <View style={styles.modalContent}>
+                            <Text style={styles.modalTitle}>Choose your favorite class</Text>
+                            <ScrollView style={styles.classList}>
+                                {dndClasses.map((dndClass) => (
+                                    <TouchableOpacity
+                                        key={dndClass}
+                                        style={[
+                                            styles.classOption,
+                                            selectedClass === dndClass && styles.selectedClassOption
+                                        ]}
+                                        onPress={() => {
+                                            setSelectedClass(dndClass);
+                                            setShowClassModal(false);
+                                        }}
+                                    >
+                                        <Text style={[
+                                            styles.classOptionName,
+                                            selectedClass === dndClass && styles.selectedClassOptionName
+                                        ]}>
+                                            {dndClass}
+                                        </Text>
+                                        <Text style={[
+                                            styles.classOptionDescription,
+                                            selectedClass === dndClass && styles.selectedClassOptionDescription
+                                        ]}>
+                                            {classDescriptions[dndClass]}
+                                        </Text>
+                                    </TouchableOpacity>
+                                ))}
+                            </ScrollView>
+                            <TouchableOpacity
+                                style={styles.modalCloseButton}
+                                onPress={() => setShowClassModal(false)}
+                            >
+                                <Text style={styles.modalCloseButtonText}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
             </View>
         </LinearGradient>
     );
@@ -215,5 +298,101 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 14,
         fontWeight: '500',
+    },
+    classSelector: {
+        borderWidth: 1,
+        borderColor: COLORS.GRAY_LIGHT,
+        marginBottom: 15,
+        padding: 15,
+        borderRadius: 12,
+        backgroundColor: COLORS.GRAY_LIGHT,
+    },
+    classSelectorLabel: {
+        fontSize: 12,
+        color: COLORS.GRAY_MEDIUM,
+        marginBottom: 4,
+        fontWeight: '500',
+    },
+    classSelectorValue: {
+        fontSize: 16,
+        color: COLORS.DEEP_PURPLE,
+        fontWeight: 'bold',
+        marginBottom: 2,
+    },
+    classSelectorDescription: {
+        fontSize: 12,
+        color: COLORS.GRAY_MEDIUM,
+        fontStyle: 'italic',
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalContent: {
+        backgroundColor: COLORS.WHITE,
+        margin: 20,
+        borderRadius: 16,
+        padding: 20,
+        width: '90%',
+        maxHeight: '80%',
+        shadowColor: COLORS.DEEP_PURPLE,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.25,
+        shadowRadius: 12,
+        elevation: 8,
+    },
+    modalTitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: COLORS.DEEP_PURPLE,
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    classList: {
+        maxHeight: 300,
+    },
+    classOption: {
+        padding: 15,
+        borderRadius: 12,
+        marginBottom: 10,
+        backgroundColor: COLORS.GRAY_LIGHT,
+        borderWidth: 1,
+        borderColor: COLORS.GRAY_LIGHT,
+    },
+    selectedClassOption: {
+        backgroundColor: COLORS.VIBRANT_ORANGE + '20',
+        borderColor: COLORS.VIBRANT_ORANGE,
+    },
+    classOptionName: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: COLORS.DEEP_PURPLE,
+        marginBottom: 4,
+    },
+    selectedClassOptionName: {
+        color: COLORS.VIBRANT_ORANGE,
+    },
+    classOptionDescription: {
+        fontSize: 12,
+        color: COLORS.GRAY_MEDIUM,
+        fontStyle: 'italic',
+    },
+    selectedClassOptionDescription: {
+        color: COLORS.DEEP_PURPLE,
+    },
+    modalCloseButton: {
+        backgroundColor: COLORS.BRIGHT_RED,
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        borderRadius: 25,
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    modalCloseButtonText: {
+        color: COLORS.WHITE,
+        fontWeight: 'bold',
+        fontSize: 16,
     },
 });

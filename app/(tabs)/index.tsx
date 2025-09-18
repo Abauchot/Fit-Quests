@@ -15,9 +15,9 @@ export default function HomeScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Fit&Quest</Text>
         <View style={styles.separator} lightColor={COLORS.VIBRANT_ORANGE} darkColor={COLORS.WINE_RED} />
-        <Text style={styles.subtitle}>Préparez-vous pour l'aventure !</Text>
+        <Text style={styles.subtitle}>Get ready for adventure!</Text>
         <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <RNText style={styles.buttonText}>Commencer une quête</RNText>
+          <RNText style={styles.buttonText}>Start a quest</RNText>
         </TouchableOpacity>
       </View>
     </LinearGradient>

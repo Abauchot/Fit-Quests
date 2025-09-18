@@ -1,212 +1,212 @@
 import { DnDClass, Exercise, Workout } from '../types';
 
-// Exercices de base par classe D&D
+// Basic exercises by D&D class
 export const EXERCISE_DATABASE: Record<DnDClass, Exercise[]> = {
-  'Guerrier': [
+  'Fighter': [
     {
       id: 'guerrier_1',
-      name: 'Pompes murales',
-      description: 'Renforcement du haut du corps pour les guerriers',
+      name: 'Wall Push-ups',
+      description: 'Upper body strengthening for fighters',
       duration: 45,
       instructions: [
-        'Placez-vous face à un mur, bras tendus',
-        'Effectuez des pompes contre le mur',
-        'Gardez le corps droit'
+        'Stand facing a wall, arms extended',
+        'Perform push-ups against the wall',
+        'Keep your body straight'
       ],
       modifications: {
-        shoulder: 'Réduisez l\'amplitude du mouvement'
+        shoulder: 'Reduce range of motion'
       },
       xpReward: 10
     },
     {
       id: 'guerrier_2',
-      name: 'Squats au poids du corps',
-      description: 'Renforcement des jambes',
+      name: 'Bodyweight Squats',
+      description: 'Leg strengthening',
       duration: 60,
       instructions: [
-        'Pieds écartés largeur d\'épaules',
-        'Descendez comme pour vous asseoir',
-        'Remontez en poussant sur les talons'
+        'Feet shoulder-width apart',
+        'Lower down as if sitting on a chair',
+        'Rise up by pushing through your heels'
       ],
       modifications: {
-        knee: 'Descendez moins bas, utilisez une chaise pour vous aider'
+        knee: 'Go down less, use a chair for support'
       },
       xpReward: 10
     }
   ],
 
-  'Moine': [
+  'Monk': [
     {
       id: 'moine_1',
-      name: 'Étirements chat-chien',
-      description: 'Mobilité de la colonne vertébrale',
+      name: 'Cat-Cow Stretches',
+      description: 'Spinal mobility',
       duration: 45,
       instructions: [
-        'À quatre pattes, alternez dos rond et dos creusé',
-        'Mouvement lent et contrôlé',
-        'Respirez profondément'
+        'On hands and knees, alternate arched and rounded back',
+        'Slow and controlled movement',
+        'Breathe deeply'
       ],
       xpReward: 10
     },
     {
       id: 'moine_2',
-      name: 'Rotations de hanches',
-      description: 'Mobilité des hanches',
+      name: 'Hip Rotations',
+      description: 'Hip mobility',
       duration: 30,
       instructions: [
-        'Debout, mains sur les hanches',
-        'Effectuez des cercles avec le bassin',
-        'Alternez sens horaire et anti-horaire'
+        'Standing, hands on hips',
+        'Make circles with your pelvis',
+        'Alternate clockwise and counterclockwise'
       ],
       modifications: {
-        knee: 'Appuyez-vous sur une chaise pour l\'équilibre'
+        knee: 'Lean on a chair for balance'
       },
       xpReward: 10
     }
   ],
 
-  'Roublard': [
+  'Rogue': [
     {
       id: 'roublard_1',
-      name: 'Équilibre sur une jambe',
-      description: 'Amélioration de l\'équilibre et proprioception',
+      name: 'Single Leg Balance',
+      description: 'Balance and proprioception improvement',
       duration: 30,
       instructions: [
-        'Tenez-vous sur une jambe',
-        'Maintenez la position',
-        'Alternez les jambes'
+        'Stand on one leg',
+        'Hold the position',
+        'Alternate legs'
       ],
       modifications: {
-        knee: 'Utilisez un support pour vous tenir'
+        knee: 'Use support to hold on'
       },
       xpReward: 10
     },
     {
       id: 'roublard_2',
-      name: 'Marche talon-pointe',
-      description: 'Coordination et équilibre dynamique',
+      name: 'Heel-to-Toe Walk',
+      description: 'Coordination and dynamic balance',
       duration: 45,
       instructions: [
-        'Marchez en ligne droite',
-        'Placez le talon devant la pointe de l\'autre pied',
-        'Gardez les bras écartés pour l\'équilibre'
+        'Walk in a straight line',
+        'Place heel in front of the toe of the other foot',
+        'Keep arms spread out for balance'
       ],
       xpReward: 10
     }
   ],
 
-  'Barde': [
+  'Bard': [
     {
       id: 'barde_1',
-      name: 'Respiration 4-7-8',
-      description: 'Technique de respiration relaxante',
+      name: '4-7-8 Breathing',
+      description: 'Relaxing breathing technique',
       duration: 120,
       instructions: [
-        'Inspirez par le nez pendant 4 temps',
-        'Retenez votre souffle pendant 7 temps',
-        'Expirez par la bouche pendant 8 temps'
+        'Inhale through nose for 4 counts',
+        'Hold your breath for 7 counts',
+        'Exhale through mouth for 8 counts'
       ],
       xpReward: 10
     },
     {
       id: 'barde_2',
-      name: 'Méditation guidée',
-      description: 'Relaxation et centrage',
+      name: 'Guided Meditation',
+      description: 'Relaxation and centering',
       duration: 180,
       instructions: [
-        'Asseyez-vous confortablement',
-        'Fermez les yeux',
-        'Concentrez-vous sur votre respiration'
+        'Sit comfortably',
+        'Close your eyes',
+        'Focus on your breathing'
       ],
       xpReward: 10
     }
   ],
 
-  'Clerc': [
+  'Cleric': [
     {
       id: 'clerc_1',
-      name: 'Élévations d\'épaules',
-      description: 'Renforcement et stabilisation des épaules',
+      name: 'Shoulder Elevations',
+      description: 'Shoulder strengthening and stabilization',
       duration: 45,
       instructions: [
-        'Bras le long du corps',
-        'Soulevez les épaules vers les oreilles',
-        'Relâchez lentement'
+        'Arms along your body',
+        'Lift shoulders towards ears',
+        'Release slowly'
       ],
       modifications: {
-        shoulder: 'Amplitude réduite, mouvement très doux'
+        shoulder: 'Reduced range, very gentle movement'
       },
       xpReward: 10
     },
     {
       id: 'clerc_2',
-      name: 'Rotations d\'épaules',
-      description: 'Mobilité des épaules',
+      name: 'Shoulder Rotations',
+      description: 'Shoulder mobility',
       duration: 30,
       instructions: [
-        'Effectuez des cercles avec les épaules',
-        'Vers l\'avant puis vers l\'arrière',
-        'Mouvement lent et contrôlé'
+        'Make circles with your shoulders',
+        'Forward then backward',
+        'Slow and controlled movement'
       ],
       modifications: {
-        shoulder: 'Cercles très petits'
+        shoulder: 'Very small circles'
       },
       xpReward: 10
     }
   ],
 
-  'Druide': [
+  'Druid': [
     {
       id: 'druide_1',
-      name: 'Torsions spinales',
-      description: 'Mobilité de la colonne vertébrale',
+      name: 'Spinal Twists',
+      description: 'Spinal mobility',
       duration: 60,
       instructions: [
-        'Assis, tournez le tronc vers la droite',
-        'Maintenez puis tournez vers la gauche',
-        'Respirez profondément'
+        'Seated, rotate trunk to the right',
+        'Hold then rotate to the left',
+        'Breathe deeply'
       ],
       xpReward: 10
     },
     {
       id: 'druide_2',
-      name: 'Flexions latérales',
-      description: 'Étirement des flancs',
+      name: 'Side Bends',
+      description: 'Side stretching',
       duration: 45,
       instructions: [
-        'Debout, inclinez-vous sur le côté',
-        'Maintenez l\'étirement',
-        'Alternez les côtés'
+        'Standing, lean to the side',
+        'Hold the stretch',
+        'Alternate sides'
       ],
       xpReward: 10
     }
   ],
 
-  'Mage': [
+  'Wizard': [
     {
       id: 'mage_1',
-      name: 'Cercles de bras',
-      description: 'Mobilité des épaules et concentration',
+      name: 'Arm Circles',
+      description: 'Shoulder mobility and concentration',
       duration: 45,
       instructions: [
-        'Bras tendus sur les côtés',
-        'Effectuez des petits cercles',
-        'Concentrez-vous sur le mouvement'
+        'Arms extended to the sides',
+        'Make small circles',
+        'Focus on the movement'
       ],
       modifications: {
-        shoulder: 'Bras plus bas, cercles très petits'
+        shoulder: 'Lower arms, very small circles'
       },
       xpReward: 10
     },
     {
       id: 'mage_2',
-      name: 'Étirements nuque',
-      description: 'Détente cervicale',
+      name: 'Neck Stretches',
+      description: 'Neck relaxation',
       duration: 30,
       instructions: [
-        'Inclinez doucement la tête sur le côté',
-        'Maintenez l\'étirement',
-        'Alternez les côtés'
+        'Gently tilt head to the side',
+        'Hold the stretch',
+        'Alternate sides'
       ],
       xpReward: 10
     }
@@ -215,88 +215,88 @@ export const EXERCISE_DATABASE: Record<DnDClass, Exercise[]> = {
   'Paladin': [
     {
       id: 'paladin_1',
-      name: 'Fentes statiques',
-      description: 'Renforcement des jambes et équilibre',
+      name: 'Static Lunges',
+      description: 'Leg strengthening and balance',
       duration: 60,
       instructions: [
-        'Position de fente, jambe avant fléchie',
-        'Maintenez la position',
-        'Alternez les jambes'
+        'Lunge position, front leg bent',
+        'Hold the position',
+        'Alternate legs'
       ],
       modifications: {
-        knee: 'Maintenez-vous à un support'
+        knee: 'Hold onto support'
       },
       xpReward: 10
     },
     {
       id: 'paladin_2',
-      name: 'Gainage ventral',
-      description: 'Renforcement du core',
+      name: 'Plank',
+      description: 'Core strengthening',
       duration: 45,
       instructions: [
-        'Position de planche sur les avant-bras',
-        'Maintenez le corps droit',
-        'Respirez normalement'
+        'Plank position on forearms',
+        'Keep body straight',
+        'Breathe normally'
       ],
       modifications: {
-        shoulder: 'Gainage sur les genoux'
+        shoulder: 'Plank on knees'
       },
       xpReward: 10
     }
   ],
 
-  'Rôdeur': [
+  'Ranger': [
     {
       id: 'rodeur_1',
-      name: 'Marche sur place',
-      description: 'Échauffement et endurance',
+      name: 'Marching in Place',
+      description: 'Warm-up and endurance',
       duration: 90,
       instructions: [
-        'Marchez sur place en levant les genoux',
-        'Balancez les bras naturellement',
-        'Maintenez un rythme régulier'
+        'March in place lifting knees',
+        'Swing arms naturally',
+        'Maintain regular rhythm'
       ],
       modifications: {
-        knee: 'Levez moins haut les genoux'
+        knee: 'Lift knees less high'
       },
       xpReward: 10
     },
     {
       id: 'rodeur_2',
-      name: 'Étirements mollets',
-      description: 'Assouplissement des jambes',
+      name: 'Calf Stretches',
+      description: 'Leg flexibility',
       duration: 45,
       instructions: [
-        'Appuyez-vous contre un mur',
-        'Tendez une jambe derrière',
-        'Poussez le talon au sol'
+        'Lean against a wall',
+        'Extend one leg behind',
+        'Push heel to the ground'
       ],
       xpReward: 10
     }
   ],
 
-  'Sorcier': [
+  'Sorcerer': [
     {
       id: 'sorcier_1',
-      name: 'Visualisation créative',
-      description: 'Exercice mental et relaxation',
+      name: 'Creative Visualization',
+      description: 'Mental exercise and relaxation',
       duration: 120,
       instructions: [
-        'Fermez les yeux et visualisez un lieu apaisant',
-        'Imaginez tous les détails',
-        'Respirez calmement'
+        'Close your eyes and visualize a peaceful place',
+        'Imagine all the details',
+        'Breathe calmly'
       ],
       xpReward: 10
     },
     {
       id: 'sorcier_2',
-      name: 'Mouvements fluides',
-      description: 'Coordination et grâce',
+      name: 'Fluid Movements',
+      description: 'Coordination and grace',
       duration: 60,
       instructions: [
-        'Effectuez des mouvements lents et fluides',
-        'Comme si vous lanciez des sorts',
-        'Concentrez-vous sur la fluidité'
+        'Perform slow and fluid movements',
+        'As if casting spells',
+        'Focus on fluidity'
       ],
       xpReward: 10
     }
@@ -305,59 +305,59 @@ export const EXERCISE_DATABASE: Record<DnDClass, Exercise[]> = {
   'Warlock': [
     {
       id: 'warlock_1',
-      name: 'Contractions isométriques',
-      description: 'Renforcement statique',
+      name: 'Isometric Contractions',
+      description: 'Static strengthening',
       duration: 45,
       instructions: [
-        'Contractez tous vos muscles en même temps',
-        'Maintenez la tension',
-        'Relâchez lentement'
+        'Contract all your muscles at the same time',
+        'Hold the tension',
+        'Release slowly'
       ],
       xpReward: 10
     },
     {
       id: 'warlock_2',
-      name: 'Respiration énergisante',
-      description: 'Technique de respiration dynamisante',
+      name: 'Energizing Breathing',
+      description: 'Energizing breathing technique',
       duration: 60,
       instructions: [
-        'Inspirations courtes et rapides',
-        'Expirations courtes et rapides',
-        'Terminez par une respiration profonde'
+        'Short and rapid inhalations',
+        'Short and rapid exhalations',
+        'End with a deep breath'
       ],
       xpReward: 10
     }
   ],
 
-  'Barbare': [
+  'Barbarian': [
     {
       id: 'barbare_1',
-      name: 'Montées de genoux',
-      description: 'Exercice cardio intense',
+      name: 'High Knees',
+      description: 'Intense cardio exercise',
       duration: 60,
       instructions: [
-        'Courez sur place en montant les genoux',
-        'Rythme soutenu',
-        'Balancez les bras'
+        'Run in place lifting knees high',
+        'Sustained rhythm',
+        'Swing your arms'
       ],
       modifications: {
-        knee: 'Montez moins haut les genoux, rythme plus lent'
+        knee: 'Lift knees less high, slower rhythm'
       },
       xpReward: 10
     },
     {
       id: 'barbare_2',
-      name: 'Burpees modifiés',
-      description: 'Exercice complet du corps',
+      name: 'Modified Burpees',
+      description: 'Full body exercise',
       duration: 45,
       instructions: [
-        'Accroupi, mains au sol',
-        'Tendez les jambes en arrière',
-        'Revenez en position accroupie'
+        'Squat down, hands on floor',
+        'Extend legs backward',
+        'Return to squat position'
       ],
       modifications: {
-        knee: 'Éliminez le saut, mouvements plus lents',
-        shoulder: 'Restez debout, pas de position au sol'
+        knee: 'Eliminate jump, slower movements',
+        shoulder: 'Stay standing, no floor position'
       },
       xpReward: 10
     }
@@ -370,24 +370,24 @@ export const WORKOUTS_BY_CLASS: Record<DnDClass, Workout> = Object.entries(EXERC
   
   acc[dndClass] = {
     id: `workout_${className.toLowerCase()}`,
-    name: `Séance ${className}`,
+    name: `${className} Session`,
     dndClass,
-    description: `Séance d'entraînement thématique pour la classe ${className}`,
+    description: `Themed training session for ${className} class`,
     segments: [
       {
         id: `${className.toLowerCase()}_segment_1`,
-        name: 'Échauffement',
+        name: 'Warm-up',
         exercises: [exercises[0]],
         restTime: 30
       },
       {
         id: `${className.toLowerCase()}_segment_2`, 
-        name: 'Exercice principal',
+        name: 'Main exercise',
         exercises: [exercises[1]],
         restTime: 60
       }
     ],
-    totalDuration: exercises.reduce((total, ex) => total + ex.duration, 0) + 90, // + temps de repos
+    totalDuration: exercises.reduce((total, ex) => total + ex.duration, 0) + 90, // + rest time
     xpReward: 50
   };
   

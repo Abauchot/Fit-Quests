@@ -19,12 +19,12 @@ export default function SignupTab() {
 
     const handleSignup = async () => {
         if (!username || !pin || !confirmPin) {
-            setError("Tous les champs sont requis");
+            setError("All fields are required");
             return;
         }
 
         if (pin.length < 6 || pin.length > 8) {
-            setError("Le PIN doit contenir entre 6 et 8 chiffres");
+            setError("PIN must be between 6 and 8 digits");
             return;
         }
 
@@ -47,7 +47,7 @@ export default function SignupTab() {
             const user: UserProfile = {
                 id: Crypto.randomUUID(),
                 username,
-                favoriteClass: "Guerrier", 
+                favoriteClass: "Fighter", 
                 healthFlags: { hasKneeIssues: false, hasShoulderIssues: false },
                 totalXP: 0,
                 level: 1,
@@ -57,14 +57,14 @@ export default function SignupTab() {
             // Save the user profile securely
             await StorageService.saveUserProfile(user);
             
-            // Actualiser l'état d'authentification
+            // Refresh authentication state
             await checkAuthStatus();
             
-            Alert.alert("Succès", "Votre aventure peut commencer !", [
+            Alert.alert("Success", "Your adventure can begin!", [
                 { text: "OK", onPress: () => router.replace('/') }
             ]);
         } catch (error) {
-            setError("Erreur lors de la création du compte");
+            setError("Error while creating account");
             console.error(error);
         } finally {
             setLoading(false);
@@ -79,7 +79,7 @@ export default function SignupTab() {
             end={{ x: 1, y: 1 }}
         >
             <View style={styles.container}>
-                <Text style={styles.title}>Créer votre compte</Text>
+                <Text style={styles.title}>Create your account</Text>
                 <Text style={styles.subtitle}>Commencez votre aventure !</Text>
                 
                 <View style={styles.card}>
@@ -125,7 +125,7 @@ export default function SignupTab() {
                         activeOpacity={0.8}
                     >
                         <Text style={styles.buttonText}>
-                            {loading ? "Création..." : "Créer le compte"}
+                            {loading ? "Creating..." : "Create Account"}
                         </Text>
                     </TouchableOpacity>
                 </View>

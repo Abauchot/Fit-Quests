@@ -9,7 +9,7 @@ import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function ProfileTab() {
   const { user, logout, isLoading, isAuthenticated } = useAuth();
 
-  // Rediriger vers la page de login si l'utilisateur n'est pas authentifié
+  // Redirect to login page if user is not authenticated
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       router.replace('/login');
@@ -18,12 +18,12 @@ export default function ProfileTab() {
 
   const handleLogout = () => {
     Alert.alert(
-      'Déconnexion',
-      'Êtes-vous sûr de vouloir vous déconnecter ?',
+      'Logout',
+      'Are you sure you want to log out?',
       [
-        { text: 'Annuler', style: 'cancel' },
+        { text: 'Cancel', style: 'cancel' },
         { 
-          text: 'Déconnexion', 
+          text: 'Logout', 
           style: 'destructive',
           onPress: async () => {
             await logout();
@@ -39,18 +39,18 @@ export default function ProfileTab() {
     
     Alert.alert(
       'Debug: Reset App',
-      'Ceci va supprimer toutes les données de l\'app. Continuer ?',
+      'This will delete all app data. Continue?',
       [
-        { text: 'Annuler', style: 'cancel' },
+        { text: 'Cancel', style: 'cancel' },
         { 
           text: 'Reset', 
           style: 'destructive',
           onPress: async () => {
             try {
               await StorageService.emergencyReset();
-              Alert.alert('Reset Completed', 'L\'app a été réinitialisée. Redémarrez l\'app.');
+              Alert.alert('Reset Completed', 'The app has been reset. Please restart the app.');
             } catch (error) {
-              Alert.alert('Error', 'Erreur lors du reset: ' + (error instanceof Error ? error.message : 'Unknown error'));
+              Alert.alert('Error', 'Reset error: ' + (error instanceof Error ? error.message : 'Unknown error'));
             }
           }
         }
@@ -66,12 +66,12 @@ export default function ProfileTab() {
       const cleanupResult = await StorageService.clearCorruptedData();
       
       const message = cleanupResult.cleaned.length > 0 
-        ? `Nettoyage terminé. ${cleanupResult.cleaned.length} entrées supprimées: ${cleanupResult.cleaned.join(', ')}`
-        : 'Aucune donnée corrompue trouvée.';
+        ? `Cleanup completed. ${cleanupResult.cleaned.length} entries removed: ${cleanupResult.cleaned.join(', ')}`
+        : 'No corrupted data found.';
         
       Alert.alert('Storage Check', message);
     } catch (error) {
-      Alert.alert('Error', 'Erreur: ' + (error instanceof Error ? error.message : 'Unknown error'));
+      Alert.alert('Error', 'Error: ' + (error instanceof Error ? error.message : 'Unknown error'));
     }
   };
 
@@ -80,9 +80,9 @@ export default function ProfileTab() {
     
     try {
       await StorageService.logAllUsers();
-      Alert.alert('Users Logged', 'Toutes les données utilisateur ont été loggées. Voir la console pour les détails.');
+      Alert.alert('Users Logged', 'All user data has been logged. See console for details.');
     } catch (error) {
-      Alert.alert('Error', 'Erreur: ' + (error instanceof Error ? error.message : 'Unknown error'));
+      Alert.alert('Error', 'Error: ' + (error instanceof Error ? error.message : 'Unknown error'));
     }
   };
 
@@ -96,18 +96,18 @@ export default function ProfileTab() {
         end={{ x: 1, y: 1 }}
       >
         <View style={styles.container}>
-          <Text style={styles.loadingText}>Chargement...</Text>
+          <Text style={styles.loadingText}>Loading...</Text>
         </View>
       </LinearGradient>
     );
   }
 
-  // Si l'utilisateur n'est pas authentifié, il sera redirigé par useEffect
+  // If user is not authenticated, they will be redirected by useEffect
   if (!isAuthenticated || !user) {
-    return null; // Ne rien afficher, la redirection est en cours
+    return null; // Display nothing, redirection is in progress
   }
 
-  // À ce point, nous savons que user existe
+  // At this point, we know that user exists
   const currentUser = user;
 
   // Display user profile
@@ -119,22 +119,22 @@ export default function ProfileTab() {
       end={{ x: 1, y: 1 }}
     >
       <View style={styles.container}>
-        <Text style={styles.title}>Profil</Text>
+        <Text style={styles.title}>Profile</Text>
         
         <View style={styles.card}>
           <View style={styles.userInfo}>
             <View style={styles.infoRow}>
-              <Text style={styles.label}>Nom d'utilisateur:</Text>
+              <Text style={styles.label}>Username:</Text>
               <Text style={styles.value}>{currentUser.username}</Text>
             </View>
             
             <View style={styles.infoRow}>
-              <Text style={styles.label}>Classe favorite:</Text>
+              <Text style={styles.label}>Favorite Class:</Text>
               <Text style={styles.value}>{currentUser.favoriteClass}</Text>
             </View>
             
             <View style={styles.infoRow}>
-              <Text style={styles.label}>Niveau:</Text>
+              <Text style={styles.label}>Level:</Text>
               <Text style={styles.value}>{currentUser.level}</Text>
             </View>
             
@@ -149,7 +149,7 @@ export default function ProfileTab() {
             onPress={handleLogout}
             activeOpacity={0.8}
           >
-            <Text style={styles.logoutText}>Déconnexion</Text>
+            <Text style={styles.logoutText}>Logout</Text>
           </TouchableOpacity>
 
           {__DEV__ && (

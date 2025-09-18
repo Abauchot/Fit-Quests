@@ -13,17 +13,17 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     if (!pin) {
-      setError("Le PIN est requis");
+      setError("PIN is required");
       return;
     }
 
     if (pin.length < 6 || pin.length > 8) {
-      setError("Le PIN doit contenir entre 6 et 8 chiffres");
+      setError("PIN must be between 6 and 8 digits");
       return;
     }
 
     if (!/^\d+$/.test(pin)) {
-      setError("Le PIN ne doit contenir que des chiffres");
+      setError("PIN must contain only numbers");
       return;
     }
 
@@ -34,14 +34,14 @@ export default function LoginPage() {
       const success = await login(pin);
       if (success) {
         setPin("");
-        Alert.alert("Succès", "Connexion réussie !");
-        // Rediriger vers l'onglet profile après connexion réussie
+        Alert.alert("Success", "Login successful!");
+        // Redirect to profile tab after successful login
         router.replace('/(tabs)/profile');
       } else {
-        setError("PIN incorrect");
+        setError("Incorrect PIN");
       }
     } catch (error) {
-      setError("Erreur lors de la connexion");
+      setError("Login error");
       console.error(error);
     } finally {
       setLoginLoading(false);
@@ -56,15 +56,15 @@ export default function LoginPage() {
       end={{ x: 1, y: 1 }}
     >
       <View style={styles.container}>
-        <Text style={styles.title}>Connexion</Text>
-        <Text style={styles.subtitle}>Entrez votre PIN pour accéder à votre profil</Text>
+        <Text style={styles.title}>Login</Text>
+        <Text style={styles.subtitle}>Enter your PIN to access your profile</Text>
         
         {dataCorrupted && (
           <View style={styles.warningBox}>
-            <Text style={styles.warningTitle}>⚠️ Données restaurées</Text>
+            <Text style={styles.warningTitle}>⚠️ Data Restored</Text>
             <Text style={styles.warningText}>
-              Vos données ont été automatiquement nettoyées en raison d'une corruption. 
-              Vous devrez créer un nouveau compte.
+              Your data has been automatically cleaned due to corruption. 
+              You will need to create a new account.
             </Text>
             <TouchableOpacity 
               style={styles.warningButton} 
@@ -74,14 +74,14 @@ export default function LoginPage() {
               }}
               activeOpacity={0.8}
             >
-              <Text style={styles.warningButtonText}>Créer un nouveau compte</Text>
+              <Text style={styles.warningButtonText}>Create a new account</Text>
             </TouchableOpacity>
           </View>
         )}
         
         <View style={styles.card}>
           <TextInput
-            placeholder="PIN (6-8 chiffres)"
+            placeholder="PIN (6-8 digits)"
             value={pin}
             onChangeText={setPin}
             secureTextEntry
@@ -101,7 +101,7 @@ export default function LoginPage() {
             activeOpacity={0.8}
           >
             <Text style={styles.loginText}>
-              {loginLoading ? "Connexion..." : "Se connecter"}
+              {loginLoading ? "Connecting..." : "Log in"}
             </Text>
           </TouchableOpacity>
 
@@ -114,7 +114,7 @@ export default function LoginPage() {
             activeOpacity={0.8}
           >
             <Text style={styles.signupLinkText}>
-              Pas encore de compte ? Créer un compte
+              No account yet? Create an account
             </Text>
           </TouchableOpacity>
         </View>
